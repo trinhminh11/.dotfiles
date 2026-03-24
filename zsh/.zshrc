@@ -41,6 +41,7 @@ fi
 
 # eza for printing tree folder
 if ! command -v eza >/dev/null 2>&1; then
+    sudo apt install -y build-essential
     echo "⚠️ eza is not installed. Installing eza..."
     cargo install --locked eza
     if [ $? -eq 0 ]; then
@@ -73,7 +74,7 @@ fi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # ====================================================================================================================================
 # uv installation for python
-if [ ! -f "$HOME/.local/bin/uv" ]; then
+if ! command -v uv &>/dev/null; then
     eval "curl -LsSf https://astral.sh/uv/install.sh | sh"
 fi
 # ====================================================================================================================================
