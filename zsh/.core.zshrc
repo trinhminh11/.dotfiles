@@ -63,7 +63,7 @@ ZINIT_HOME="${XDG_DATA_HOME:-$HOME}/.local/share/zinit/zinit.git"
 
 if [ ! -d "$ZINIT_HOME" ]; then
     echo "Zinit is not installed, installing Zinit..."
-    eval "$DOTFILESHOME/scripts/setup.sh"
+    eval "bash $DOTFILESHOME/scripts/setup.sh"
 fi
 
 source "$ZINIT_HOME/zinit.zsh"
