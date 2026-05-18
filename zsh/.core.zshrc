@@ -13,7 +13,7 @@ fi
 # Check cargo installation
 if ! command -v cargo >/dev/null 2>&1; then
     echo "⚠️ Cargo is not installed. Installing Rust (includes Cargo)..."
-    eval "$DOTFILESHOME/scripts/setup.sh"
+    eval "bash $DOTFILESHOME/scripts/setup.sh"
 fi
 
 if [[ -f "$HOME/.cargo/env" ]]; then
