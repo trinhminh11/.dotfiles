@@ -59,7 +59,7 @@ if [ ! -f "$HOME/.local/bin/uv" ]; then
     eval "curl -LsSf https://astral.sh/uv/install.sh | sh"
 fi
 
-
+ZINIT_HOME="${XDG_DATA_HOME:-$HOME}/.local/share/zinit/zinit.git"
 if [ ! -d "$ZINIT_HOME" ]; then
     echo "Cloning Zinit..."
     mkdir -p "$(dirname $ZINIT_HOME)"
