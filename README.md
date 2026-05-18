@@ -1,3 +1,50 @@
+# Dotfiles
+
+Quick guide to install and use these dotfiles.
+
+Prerequisites
+- `stow` (GNU Stow) installed. On macOS you can install it via Homebrew:
+
+```bash
+brew install stow
+```
+
+Notes
+- Current stable-tested environment: Linux (Debian-based).
+- It's preferable to run `scripts/setup.sh` first, but it's fine to skip.
+- The repository must be located at `~/.dotfiles`.
+ - If you have an existing `~/.zshrc`, move or back it up **before** running `stow zsh` — Stow will create symlinks and can conflict with an existing `~/.zshrc`.
+     Example:
+
+```bash
+cp ~/.zshrc ~/.zshrc.backup
+rm ~/.zshrc
+```
+
+Install
+1. Open a terminal and change to the repo:
+
+```bash
+cd ~/.dotfiles
+```
+
+2. Stow the zsh configuration:
+
+```bash
+stow zsh
+```
+
+That's all — then switch to using `zsh` as your shell (e.g., `chsh -s $(which zsh)`), or start a new terminal.
+
+Layout & Notes
+- All the core logic lives in `~/.core.zshrc`.
+- Your `~/.zshrc` will source `~/.core.zshrc`.
+- Additional additions to `~/.zshrc` may come from other libraries or programs you add.
+
+Troubleshooting
+- Ensure the repository is checked out to `~/.dotfiles` and that `stow` has write access to your home directory.
+
+If you want, I can also add a small checklist to automate the setup steps.
 # Dotfiles Installation Guide
 
 This guide helps you install your dotfiles using [GNU Stow](https://www.gnu.org/software/stow/). It also covers installing dependencies via Homebrew (macOS) or your Linux package manager.
@@ -35,7 +82,7 @@ This guide helps you install your dotfiles using [GNU Stow](https://www.gnu.org/
 
 1. **Clone your dotfiles repository:**
     ```sh
-    git clone https://github.com/trinhminh11/dotfiles.git ~/dotfiles
+    git clone https://github.com/trinhminh11/.dotfiles.git ~/dotfiles
     cd ~/dotfiles
     ```
 
