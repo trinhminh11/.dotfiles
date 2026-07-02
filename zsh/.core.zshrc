@@ -20,37 +20,7 @@ if [[ -f "$HOME/.cargo/env" ]]; then
     . "$HOME/.cargo/env"
 fi
 
-# # eza for printing tree folder
-# if ! command -v eza >/dev/null 2>&1; then
-#     echo "⚠️ eza is not installed. Installing eza..."
-#     cargo install --locked eza
-#     if [ $? -eq 0 ]; then
-#         echo "✅ eza installed successfully."
-#     else
-#         echo "❌ Failed to install eza."
-#     fi
-# fi
 
-# # zoxide for cd replacement
-# if ! command -v zoxide >/dev/null 2>&1; then
-#     echo "⚠️ zoxide is not installed. Installing zoxide..."
-#     cargo install zoxide --locked
-#     if [ $? -eq 0 ]; then
-#         echo "✅ zoxide installed successfully."
-#     else
-#         echo "❌ Failed to install zoxide."
-#     fi
-# fi
-# ====================================================================================================================================
-# conda initialization, uncomment if you want conda initialization
-# if [ -d "$DOTFILESHOME/conda" ]; then
-#     . "$DOTFILESHOME/conda/conda.sh"
-# fi
-# ====================================================================================================================================
-# if [ ! -d "$HOME/.fzf" ]; then
-#     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-#     yes | ~/.fzf/install
-# fi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # ====================================================================================================================================
 # uv installation for python
@@ -132,6 +102,9 @@ if [ -f "$DOTFILESHOME/aliases/.alias.sh" ]; then
     . "$DOTFILESHOME/aliases/.alias.sh"
 fi
 
+if [ -f "$HOME/.private/.env" ]; then
+    . "$HOME/.private/.env"
+fi
 
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu select
