@@ -3,8 +3,15 @@ if ! command -v stow &> /dev/null; then
     exit 1
 fi
 
+if [ -f "$HOME/.zshrc" ]; then
+    echo "Backing up existing .zshrc to .zshrc.bak"
+    mv "$HOME/.zshrc" "$HOME/.zshrc.bak"
+fi
+
 stow zsh
 
-touch ~/.zprofile
+touch "$HOME/.zprofile"
 
-echo "source ~/.core.zshrc" >> ~/.zprofile
+echo "source ~/.core.zshrc" >> "$HOME/.zprofile"
+
+source "$HOME/.zprofile"
