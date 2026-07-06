@@ -1,5 +1,12 @@
 if ! command -v stow &> /dev/null; then
-    echo "GNU Stow is not installed. Please install it to continue."
+    echo "GNU Stow is not installed. Installing..."
+    sudo apt-get install stow -y
+    exit 1
+fi
+
+if ! command -v zsh &> /dev/null; then
+    echo "Zsh is not installed. Installing..."
+    sudo apt-get install zsh -y
     exit 1
 fi
 
