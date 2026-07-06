@@ -11,7 +11,10 @@ fi
 stow zsh
 
 touch "$HOME/.zprofile"
-
-echo "source ~/.core.zshrc" >> "$HOME/.zprofile"
+if grep -qF "source ~/.core.zshrc" ~/.zprofile; then
+    echo "source ~/.core.zshrc" >> "$HOME/.zprofile"
+fi
 
 source "$HOME/.zprofile"
+
+echo "Zsh setup complete. Please restart your computer to apply permanent changes. You can also run 'source ~/.zprofile' to apply changes immediately."

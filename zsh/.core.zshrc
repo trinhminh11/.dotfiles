@@ -86,7 +86,6 @@ cp "$DOTFILESHOME/scripts/prompt_pure_setup" "$puredir/prompt_pure_setup"
 unset puredir
 
 autoload -Uz promptinit; promptinit
-prompt pure
 
 zstyle :prompt:pure:git:stash show yes
 zstyle :prompt:pure:git:fetch only_upstream yes
