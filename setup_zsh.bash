@@ -18,9 +18,13 @@ fi
 stow zsh
 
 touch "$HOME/.zprofile"
-if ! grep -qF "source ~/.core.zshrc" ~/.zprofile; then
+
+if grep -qF "source ~/.core.zshrc" ~/.zprofile; then
+    :
+else
     echo "source ~/.core.zshrc" >> "$HOME/.zprofile"
 fi
+
 
 source "$HOME/.zprofile"
 
