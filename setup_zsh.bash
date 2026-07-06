@@ -25,6 +25,8 @@ else
     echo "source ~/.core.zshrc" >> "$HOME/.zprofile"
 fi
 
+zsh
+
 
 source "$HOME/.zprofile"
 
