@@ -23,7 +23,7 @@ if grep -qF "source ~/.core.zshrc" ~/.zprofile; then
     :
 else
     echo "source ~/.core.zshrc" >> "$HOME/.zprofile"
-    echo "ZINIT=true" >> "$HOME/.zprofile"
+    echo "ZSETUP=true" >> "$HOME/.zprofile"
 fi
 
 
