@@ -25,9 +25,7 @@ else
     echo "source ~/.core.zshrc" >> "$HOME/.zprofile"
 fi
 
-zsh
 
-
-source "$HOME/.zprofile"
+zsh -c "source $HOME/.zprofile"
 
 echo "Zsh setup complete. Please restart your computer to apply permanent changes. You can also run 'source ~/.zprofile' to apply changes immediately."
