@@ -82,7 +82,7 @@ if ! fc-list | grep -i "FiraCode Nerd Font" > /dev/null; then
     echo "Downloading $__fontname..."
     curl -L -o "$__temp_dir/FiraCode.zip" "$__download_url"
     echo "Extracting font files..."
-    tar -xzf "$__temp_dir/FiraCode.tar.gz" -C "$__temp_dir" --overwrite
+    tar -xzf "$__temp_dir/FiraCode.tar.gz" -C "$__temp_dir"
     # Move TTF files to font directory
     find "$__temp_dir" -iname "*FiraCode*.ttf" -exec cp {} "$__fontdir/" \;
     # Clean up
