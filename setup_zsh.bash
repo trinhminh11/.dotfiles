@@ -23,9 +23,14 @@ if grep -qF "source ~/.core.zshrc" ~/.zprofile; then
     :
 else
     echo "source ~/.core.zshrc" >> "$HOME/.zprofile"
+    echo "ZINIT=true" >> "$HOME/.zprofile"
 fi
 
 
 zsh -c "source $HOME/.zprofile"
 
 echo "Zsh setup complete. Please restart your computer to apply permanent changes. You can also run 'source ~/.zprofile' to apply changes immediately."
+
+sudo chsh -s "$(which zsh)" "$USER"
+
+zsh
