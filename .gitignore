@@ -1,3 +1,6 @@
 .git
 .vscode
 .enable_package
+
+zsh/.zshrc
+

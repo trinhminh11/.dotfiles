@@ -53,6 +53,16 @@ if [ ! -d "$HOME/.fzf" ]; then
     yes | ~/.fzf/install
 fi
 
+if ! command -v rg > /dev/null 2>&1; then
+    echo "⚠️ ripgrep is not installed. Installing ripgrep..."
+    cargo install ripgrep --locked
+    if [ $? -eq 0 ]; then
+        echo "✅ ripgrep installed successfully."
+    else
+        echo "❌ Failed to install ripgrep."
+    fi
+fi
+
 
 # uv installation for python
 if [ ! -f "$HOME/.local/bin/uv" ]; then

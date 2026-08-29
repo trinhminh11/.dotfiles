@@ -10,9 +10,8 @@ if [[ $OSTYPE == darwin* ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# Check cargo installation
+# Check cargo installation, if not -> haven't run setup.sh -> run setup.sh
 if ! command -v cargo >/dev/null 2>&1; then
-    echo "⚠️ Cargo is not installed. Installing Rust (includes Cargo)..."
     eval "bash $DOTFILESHOME/scripts/setup.sh"
 fi
 
@@ -55,7 +54,6 @@ bindkey '^n' history-search-forward
 
 # Load environment variables
 export __BIRTHDAY__="11042004"
-. "$HOME/.local/bin/env"
 
 HISTSIZE=10000
 HISTFILE=~/.zsh_history
@@ -113,3 +111,5 @@ autoload -Uz compinit && compinit
 zinit cdreplay -q
 
 eval "$(zoxide init --cmd cd zsh)"
+
+

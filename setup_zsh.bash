@@ -15,6 +15,7 @@ if [ -f "$HOME/.zshrc" ]; then
     mv "$HOME/.zshrc" "$HOME/.zshrc.bak"
 fi
 
+stow tmux
 stow zsh
 
 touch "$HOME/.zprofile"
