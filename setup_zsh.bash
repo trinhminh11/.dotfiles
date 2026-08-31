@@ -15,7 +15,6 @@ if [ -f "$HOME/.zshrc" ]; then
     mv "$HOME/.zshrc" "$HOME/.zshrc.bak"
 fi
 
-stow tmux
 stow zsh
 
 touch "$HOME/.zprofile"
@@ -29,6 +28,15 @@ fi
 
 
 zsh -c "source $HOME/.zprofile"
+
+echo "$DOTFILESHOME"
+
+if [ -f "$HOME/.config/tmux/tmux.conf" ]; then
+    echo "Backing up existing tmux.conf to tmux.conf.bak"
+    mv "$HOME/.config/tmux/tmux.conf" "$HOME/.config/tmux/tmux.conf.bak"
+fi
+
+ln -s "$DOTFILESHOME/tmux/tmux.conf" ~/.config/tmux/tmux.conf
 
 echo "Zsh setup complete. Please restart your computer to apply permanent changes. You can also run 'source ~/.zprofile' to apply changes immediately."
 

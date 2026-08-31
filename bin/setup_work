@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+SESSION_DIR="$HOME/.local/share/nvim/sessions"
+DIR_NAME="$(basename "$PWD")"
+SESSION_FILE="$SESSION_DIR/$DIR_NAME.vim"
+
+mkdir -p "$SESSION_DIR"
+
+if [[ -f "$SESSION_FILE" ]]; then
+    echo "Loading Neovim session: $DIR_NAME"
+    exec nvim -S "$SESSION_FILE"
+else
+    echo "Creating Neovim session: $DIR_NAME"
+    exec nvim \
+        -c "mksession! $SESSION_FILE"
+fi
+

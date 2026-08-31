@@ -2,7 +2,7 @@
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-DOTFILESHOME="$HOME/.dotfiles"
+export DOTFILESHOME="$HOME/.dotfiles"
 
 # adding brew
 if [[ $OSTYPE == darwin* ]]; then
