@@ -38,7 +38,11 @@ fi
 
 ln -s "$DOTFILESHOME/tmux/tmux.conf" ~/.config/tmux/tmux.conf
 
+echo ""
 echo "Zsh setup complete. Please restart your computer to apply permanent changes. You can also run 'source ~/.zprofile' to apply changes immediately."
+echo ""
+echo "If you use ghostty like me: run below command to link ghostty.conf"
+echo "ln -s $DOTFILESHOME/ghostty/ghostty.conf ~/.config/ghostty/ghostty.conf"
 
 sudo chsh -s "$(which zsh)" "$USER"
 
