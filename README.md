@@ -52,7 +52,7 @@ I use a custom `tmux` function from [`zsh/.zshrc`](./zsh/.zshrc) to keep my edit
 
 Running `tmux` by itself creates or attaches to a session named `<directory>-workspace` on the isolated `workspace` server. I keep this session simple: it is my editor workspace, and I do not intend to use multiple windows inside it.
 
-While inside that workspace, pressing ``Ctrl-` ``opens a small pane at the bottom and starts another tmux session named `<directory>-term` on the separate `term` server. This inner session is where I keep multiple terminal windows.
+While inside that workspace, pressing ``Ctrl+`​`` opens a small pane at the bottom and starts another tmux session named `<directory>-term` on the separate `term` server. This inner session is where I keep multiple terminal windows.
 
 Why nested tmux? I picked up the habit from VS Code, where one editor can have a terminal panel with several terminal tabs. A normal tmux layout does not give me quite the same separation. The inner session keeps the editor workspace clean, gives the terminal panel its own windows, and keeps both away from the default tmux server.
 
@@ -67,7 +67,7 @@ The main workspace prefix is `Ctrl-s`. The inner terminal session uses `Ctrl-t`,
 | `Ctrl-h/j/k/l` | Move left, down, up, or right across tmux panes and Neovim splits |
 | `Alt-h/j/k/l` | Resize the current pane in the corresponding direction |
 | `Prefix-h/j/k/l` | Create a 20% split to the left, below, above, or right |
-| ``Ctrl-` `` | Open the 20% terminal pane and start the inner tmux session |
+|  ``Ctrl+`​``| Open the 20% terminal pane and start the inner tmux session |
 | `Ctrl-Tab` / `Ctrl-Shift-Tab` | Move to the next or previous window—mostly used in the terminal session |
 | `Prefix-n` | Create a new window |
 | `Prefix-c` | Close the current pane |
