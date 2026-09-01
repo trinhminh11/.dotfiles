@@ -1,108 +1,87 @@
 # Dotfiles
 
-Quick guide to install and use these dotfiles.
+My personal, intentionally simple setup for Zsh and tmux, tested on Linux (Debian-based) and macOS. Everything uses `Monokai-Classic`—I really love the theme, and if you don't, that's your problem.
 
-Prerequisites
-- `stow` (GNU Stow) installed. On macOS you can install it via Homebrew:
+Also, check out my [trinhminh11/kickstart.nvim](https://github.com/trinhminh11/kickstart.nvim). Of course, it uses `Monokai-Classic` too.
 
-```bash
-brew install stow
-```
+## Installation
 
-Notes
-- Current stable-tested environment: Linux (Debian-based).
-- It's preferable to run `scripts/setup.sh` first, but it's fine to skip.
-- The repository must be located at `~/.dotfiles`.
- - If you have an existing `~/.zshrc`, move or back it up **before** running `stow zsh` — Stow will create symlinks and can conflict with an existing `~/.zshrc`.
-     Example:
+Clone the repository to `~/.dotfiles`, then run the setup script:
 
 ```bash
-cp ~/.zshrc ~/.zshrc.backup
-rm ~/.zshrc
-```
-
-Install
-1. Open a terminal and change to the repo:
-
-```bash
+git clone https://github.com/trinhminh11/.dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
+bash setup_zsh.bash
 ```
 
-2. Stow the zsh configuration:
+That's it. `setup_zsh.bash` installs and configures everything needed for the current setup.
 
-```bash
-stow zsh
+> The script backs up an existing `~/.zshrc` as `~/.zshrc.bak` and an existing tmux config as `tmux.conf.bak` before linking these dotfiles.
+
+## What's inside
+
+### Zsh
+
+I use [sindresorhus/pure](https://github.com/sindresorhus/pure) for a super-simple prompt. No complicated framework or giant collection of plugins—just a clean shell that does what I need.
+
+### tmux
+
+I try to use as few plugins as possible. Right now, the only tmux plugin I really need is [mrjones2014/smart-splits.nvim](https://github.com/mrjones2014/smart-splits.nvim), which makes navigation between Neovim and tmux splits seamless. It is essential to my workflow.
+
+Technically, that means I might not need TPM at all. But who knows what the future holds? I am considering adding automatic session saving for shutdowns and reboots, so TPM stays for now.
+
+#### Workspace and terminal sessions
+
+I use a custom `tmux` function from [`zsh/.zshrc`](./zsh/.zshrc) to keep my editor workspace and terminal windows separate:
+
+```text
+┌─────────────────────────────┐
+│ <directory>-workspace       │
+│ ┌─────────────────────────┐ │
+│ │                         │ │
+│ │          Neovim         │ │
+│ │                         │ │
+│ └─────────────────────────┘ │
+│ ┌─────────────────────────┐ │
+│ │ <directory>-term        │ │
+│ │ multiple terminal       │ │
+│ │ windows                 │ │
+│ └─────────────────────────┘ │
+└─────────────────────────────┘
 ```
 
-That's all — then switch to using `zsh` as your shell (e.g., `chsh -s $(which zsh)`), or start a new terminal.
+Running `tmux` by itself creates or attaches to a session named `<directory>-workspace` on the isolated `workspace` server. I keep this session simple: it is my editor workspace, and I do not intend to use multiple windows inside it.
 
-Layout & Notes
-- All the core logic lives in `~/.core.zshrc`.
-- Your `~/.zshrc` will source `~/.core.zshrc`.
-- Additional additions to `~/.zshrc` may come from other libraries or programs you add.
+While inside that workspace, pressing <kbd>Ctrl + \`</kbd> opens a small pane at the bottom and starts another tmux session named `<directory>-term` on the separate `term` server. This inner session is where I keep multiple terminal windows.
 
-Troubleshooting
-- Ensure the repository is checked out to `~/.dotfiles` and that `stow` has write access to your home directory.
+Why nested tmux? I picked up the habit from VS Code, where one editor can have a terminal panel with several terminal tabs. A normal tmux layout does not give me quite the same separation. The inner session keeps the editor workspace clean, gives the terminal panel its own windows, and keeps both away from the default tmux server.
 
-If you want, I can also add a small checklist to automate the setup steps.
-# Dotfiles Installation Guide
+#### Keymaps
 
-This guide helps you install your dotfiles using [GNU Stow](https://www.gnu.org/software/stow/). It also covers installing dependencies via Homebrew (macOS) or your Linux package manager.
+The main workspace prefix is `Ctrl-s`. The inner terminal session uses `Ctrl-t`, so its commands do not collide with the outer session.
 
-## Prerequisites
+| Key | Action |
+| --- | --- |
+| `Ctrl-s` | Prefix for the outer tmux session (workspace) |
+| `Ctrl-t` | Prefix for the inner tmux session (terminal) |
+| `Ctrl-h/j/k/l` | Move left, down, up, or right across tmux panes and Neovim splits |
+| `Alt-h/j/k/l` | Resize the current pane in the corresponding direction |
+| `Prefix-h/j/k/l` | Create a 20% split to the left, below, above, or right |
+| <kbd>Ctrl</kbd> + <kbd>`</kbd> | Open the 20% terminal pane and start the inner tmux session |
+| `Ctrl-Tab` / `Ctrl-Shift-Tab` | Move to the next or previous window—mostly used in the terminal session |
+| `Prefix-n` | Create a new window |
+| `Prefix-c` | Close the current pane |
+| `Prefix-r` | Reload the current tmux config |
 
-### macOS
+Copy mode uses Vim-style bindings:
 
-1. **Install Homebrew** (if not already installed):
-    ```sh
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    ```
-2. **Install Stow**:
-    ```sh
-    brew install stow
-    ```
+| Key | Action |
+| --- | --- |
+| `Prefix-v` | Enter copy mode |
+| `v` | Start a selection |
+| `Ctrl-v` | Toggle rectangular selection |
+| `y` | Copy the selection to the system clipboard and leave copy mode |
 
-### Linux
+## Philosophy
 
-1. **Install Stow** (Debian/Ubuntu):
-    ```sh
-    sudo apt update
-    sudo apt install stow
-    ```
-    **Fedora:**
-    ```sh
-    sudo dnf install stow
-    ```
-    **Arch:**
-    ```sh
-    sudo pacman -S stow
-    ```
-
-## Installing Dotfiles
-
-1. **Clone your dotfiles repository:**
-    ```sh
-    git clone https://github.com/trinhminh11/.dotfiles.git ~/dotfiles
-    cd ~/dotfiles
-    ```
-
-2. **Use Stow to symlink configuration files:**
-    ```sh
-    stow <package>
-    ```
-    Replace `<package>` with the folder name (e.g., `bash`, `vim`, `git`, etc.).
-
-    Example:
-    ```sh
-    stow zsh
-    stow aliases
-    ```
-
-## Notes
-
-- Each package (e.g., `bash`, `vim`) should be a directory containing config files.
-- Stow will symlink files into your home directory.
-
----
-
-Happy customizing!
+Keep the configuration simple, keep the plugin count low, and only add something when it genuinely improves the workflow.
