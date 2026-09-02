@@ -1,11 +1,10 @@
 alias dot="cd $DOTFILESHOME"
 
-
 alias zi=__zoxide_zi
 
 alias v=nvim
 
-alias dot="cd $DOTFILESHOME"
+alias cat=bat
 
 alias ls="eza --icons"
 alias la="eza -a --icons"

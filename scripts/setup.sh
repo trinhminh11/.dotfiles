@@ -48,11 +48,13 @@ if ! command -v zoxide >/dev/null 2>&1; then
 fi
 
 
+# fzf for fuzzy searching
 if [ ! -d "$HOME/.fzf" ]; then
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
     yes | ~/.fzf/install
 fi
 
+# zipgrep for searching files
 if ! command -v rg > /dev/null 2>&1; then
     echo "⚠️ ripgrep is not installed. Installing ripgrep..."
     cargo install ripgrep --locked
@@ -60,6 +62,17 @@ if ! command -v rg > /dev/null 2>&1; then
         echo "✅ ripgrep installed successfully."
     else
         echo "❌ Failed to install ripgrep."
+    fi
+fi
+
+# bat for cat replacement
+if ! command -v bat > /dev/null 2>&1; then
+    echo "⚠️ bat is not installed. Installing bat..."
+    cargo install bat --locked
+    if [ $? -eq 0 ]; then
+        echo "✅ bat installed successfully."
+    else
+        echo "❌ Failed to install bat."
     fi
 fi
 
