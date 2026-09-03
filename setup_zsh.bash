@@ -42,7 +42,7 @@ echo ""
 echo "Zsh setup complete. Please restart your computer to apply permanent changes. You can also run 'source ~/.zprofile' to apply changes immediately."
 echo ""
 echo "If you use ghostty like me: run below command to link ghostty.conf"
-echo "ln -s $DOTFILESHOME/ghostty/ghostty.conf ~/.config/ghostty/ghostty.conf"
+echo "ln -s $DOTFILESHOME/ghostty/config ~/.config/ghostty/config"
 
 sudo chsh -s "$(which zsh)" "$USER"
 

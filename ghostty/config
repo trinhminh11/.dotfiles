@@ -7,6 +7,8 @@ font-feature = -calt, -liga, -dlig
 
 copy-on-select = clipboard
 
+# MacOS Option key as Alt key
+macos-option-as-alt = true
 
 # Visible separator between split panes
 split-divider-color = #45475a
@@ -46,21 +48,30 @@ keybind = ctrl+g>7=goto_tab:7
 keybind = ctrl+g>8=goto_tab:8
 keybind = ctrl+g>9=goto_tab:9
 
+keybind = super+digit_1=ignore
+keybind = super+digit_2=ignore
+keybind = super+digit_3=ignore
+keybind = super+digit_4=ignore
+keybind = super+digit_5=ignore
+keybind = super+digit_6=ignore
+keybind = super+digit_7=ignore
+keybind = super+digit_8=ignore
+keybind = super+digit_9=ignore
+
 # split
 keybind = ctrl+g>v=new_split:right
 keybind = ctrl+g>shift+v=new_split:left
 keybind = ctrl+g>h=new_split:down
 keybind = ctrl+g>shift+h=new_split:up
 
+keybind = performable:ctrl+h=goto_split:left
 keybind = performable:ctrl+j=goto_split:bottom
 keybind = performable:ctrl+k=goto_split:top
-keybind = performable:ctrl+h=goto_split:left
 keybind = performable:ctrl+l=goto_split:right
 
 
-keybind = ctrl+up=resize_split:up,50
-keybind = ctrl+down=resize_split:down,50
-keybind = ctrl+left=resize_split:left,50
-keybind = ctrl+right=resize_split:right,50
-
+keybind = performable:alt+h=resize_split:left,50
+keybind = performable:alt+j=resize_split:down,50
+keybind = performable:alt+k=resize_split:up,50
+keybind = performable:alt+l=resize_split:right,50
 
